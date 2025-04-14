@@ -16,3 +16,26 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/about-me', function () {
+    return view("about");
+});
+
+Route::view('/contact-me', "contact",[
+    "page_name" => 'contact me',
+    "page_descrption" => 'this is contact page view'
+]);
+
+Route::get('/category/{id}' , function($id) {
+
+    $cats = [
+        '1' => 'Games',
+        '2' => 'Programing',
+        '3' => 'Books'
+    ];
+
+    return view("category", [
+        'the_id' => $cats[$id] ?? "this category not found"
+    ]);
+});
